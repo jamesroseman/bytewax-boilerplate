@@ -1,0 +1,27 @@
+version: '3'
+services:
+  zookeeper:
+    build:
+      context: .
+      dockerfile: Dockerfile.zookeeper
+    networks:
+      - services-network
+    ports:
+      - "2181:2181"
+
+  kafka:
+    build:
+      context: .
+      dockerfile: Dockerfile.kafka
+    networks:
+      - services-network
+    ports:
+      - "29092:29092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+networks:
+  services-network:
+    driver: bridge

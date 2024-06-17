@@ -1,0 +1,5 @@
+# Use the confluent zookeeper image
+FROM confluentinc/cp-zookeeper:latest
+
+# Expose the Zookeeper port
+EXPOSE 2181

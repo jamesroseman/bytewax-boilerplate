@@ -1,0 +1,10 @@
+# Use the Confluent Kafka image
+FROM confluentinc/cp-kafka:latest
+
+# Set the environment variable for the Kafka broker
+ENV KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:29092
+ENV KAFKA_BROKER_ID=1
+ENV KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+
+# Expose the Kafka port
+EXPOSE 29092
